@@ -1,6 +1,8 @@
 
 def get_generation(cells, generations):
     tracker = {}
+    if generations == 0:
+        return cells
     for i, row in enumerate(cells):
         for j, num in enumerate(row):
             total = 0
@@ -30,7 +32,7 @@ def get_generation(cells, generations):
             arr[0] = 0
     for item in tracker:
         cells[int(item[0])][int(item[1])]=tracker[item][0]
-    return cells
+    return get_generation(cells, generations-1)
 
 
 
